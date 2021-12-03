@@ -33,8 +33,9 @@ jobs:
         run: west update
       - name: West Zephyr export
         run: west zephyr-export
+
       - name: West Build (Odd43)
-        run: west build -s zmk/app -b odd43 -- -DZMK_CONFIG="${GITHUB_WORKSPACE}/config"
+        run: west build --pristine -s zmk/app -b odd43 -- -DZMK_CONFIG="${GITHUB_WORKSPACE}/config"
       - name: Odd43 DTS File
         if: ${{ always() }}
         run: cat -n build/zephyr/odd43.dts.pre.tmp
@@ -49,7 +50,7 @@ jobs:
           path: odd43.uf2
 
       - name: West Build (FruitbarGB)
-        run: west build -s zmk/app -b fruitbargb -- -DZMK_CONFIG="${GITHUB_WORKSPACE}/config"
+        run: west build --pristine -s zmk/app -b fruitbargb -- -DZMK_CONFIG="${GITHUB_WORKSPACE}/config"
       - name: FruitbarGB DTS File
         if: ${{ always() }}
         run: cat -n build/zephyr/fruitbargb.dts.pre.tmp
