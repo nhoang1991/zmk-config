@@ -50,7 +50,7 @@ jobs:
           path: odd43.uf2
 
       - name: West Build (FruitbarGB)
-        run: west build -s zmk/app -b nice_nano -- -DSHIELD=fruitbargb -DZMK_CONFIG="${GITHUB_WORKSPACE}/config"
+        run: west build --pristine -s zmk/app -b nice_nano -- -DSHIELD=fruitbargb -DZMK_CONFIG="${GITHUB_WORKSPACE}/config"
       - name: FruitbarGB DTS File
         if: ${{ always() }}
         run: cat -n build/zephyr/fruitbargb.dts.pre.tmp
